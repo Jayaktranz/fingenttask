@@ -13,29 +13,25 @@ if(isset($_POST['submit'])){
         $exploded_InpStrng = str_split($inputString);
         for($i=0; $i<count($exploded_InpStrng); $i++){
             $d = array_count_values($new_Arr);
-            if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['firstRep'])){
-                $new_Arr[] = $exploded_InpStrng[$i]; 
+           // print_r($d); die;
+            if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['firstChars'])){
+                if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <=  (int)$_POST['firstRep'])){
+                    $new_Arr[] = $exploded_InpStrng[$i];
+                }else if(!isset($d[$exploded_InpStrng[$i]])){
+                    $new_Arr[] = $exploded_InpStrng[$i];
+                }    
+
             }else if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['secondChars'])){
-                $new_Arr[] = $exploded_InpStrng[$i];
+                if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <=  (int)$_POST['secondRep'])){
+                    $new_Arr[] = $exploded_InpStrng[$i];
+                }else if(!isset($d[$exploded_InpStrng[$i]])){
+                    $new_Arr[] = $exploded_InpStrng[$i];
+                } 
             }else{
                 $new_Arr[] = $exploded_InpStrng[$i];
+                 
             }
 
-
-            // if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['firstChars'])){
-            //     $new_Arr[] = $exploded_InpStrng[$i];
-            //     $d = array_count_values($new_Arr);
-            //     if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['firstRep']))
-            //     $new_Arr[] = $exploded_InpStrng[$i];
-
-            // }else if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['secondChars'])){
-            //     $new_Arr[] = $exploded_InpStrng[$i];
-            //     $d = array_count_values($new_Arr);
-            //     if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['secondRep']))
-            //     $new_Arr[] = $exploded_InpStrng[$i];
-            // }else{
-            //     $new_Arr[] = $exploded_InpStrng[$i];
-            // }
 
         }
         $output .= '<span>OutPut : </span>'.strtoupper(implode("",$new_Arr)).'<br>';
@@ -45,15 +41,6 @@ if(isset($_POST['submit'])){
            }
            
         }
-      //  var_dump($new_Arr); die;
-
-
-        // var_dump($_POST['inpStrng']); 
-        // var_dump($_POST['firstChars']); 
-        // var_dump($_POST['firstRep']); 
-        // var_dump($_POST['secondChars']); 
-        // var_dump($_POST['secondRep']); 
-        // die;
     }
     
 
