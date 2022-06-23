@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
             <input type="text" name="firstChars" id="firstChars" />
             <br/>
             <label for="firstRep">
-                Enter The Number Of times of repettency allowed for First Character :
+                Enter The Number Of Times Of Repettency Allowed For First Character :
             </label>
             <input type="number" name="firstRep" id="firstRep" />
             <br/>
@@ -78,7 +78,7 @@ if(isset($_POST['submit'])){
             <input type="text" name="secondChars" id="secondChars" />
             <br/>
             <label for="secondRep">
-                Enter The Number Of times of repettency allowed for Second Character :
+                Enter The Number Of Times Of Repettency Allowed for Second Character :
             </label>
             <input type="number" name="secondRep"  id="secondRep" />
             <br/>
