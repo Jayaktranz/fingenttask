@@ -12,21 +12,30 @@ if(isset($_POST['submit'])){
         $inputString = strval($_POST['inpStrng']);
         $exploded_InpStrng = str_split($inputString);
         for($i=0; $i<count($exploded_InpStrng); $i++){
-
-            if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['firstChars'])){
-                $new_Arr[] = $exploded_InpStrng[$i];
-                $d = array_count_values($new_Arr);
-                if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['firstRep']))
-                $new_Arr[] = $exploded_InpStrng[$i];
-
+            $d = array_count_values($new_Arr);
+            if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['firstRep'])){
+                $new_Arr[] = $exploded_InpStrng[$i]; 
             }else if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['secondChars'])){
-                $new_Arr[] = $exploded_InpStrng[$i];
-                $d = array_count_values($new_Arr);
-                if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['secondRep']))
                 $new_Arr[] = $exploded_InpStrng[$i];
             }else{
                 $new_Arr[] = $exploded_InpStrng[$i];
             }
+
+
+            // if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['firstChars'])){
+            //     $new_Arr[] = $exploded_InpStrng[$i];
+            //     $d = array_count_values($new_Arr);
+            //     if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['firstRep']))
+            //     $new_Arr[] = $exploded_InpStrng[$i];
+
+            // }else if(strtolower($exploded_InpStrng[$i]) == strtolower($_POST['secondChars'])){
+            //     $new_Arr[] = $exploded_InpStrng[$i];
+            //     $d = array_count_values($new_Arr);
+            //     if(isset($d[$exploded_InpStrng[$i]]) && (intval($d[$exploded_InpStrng[$i]] +1) <  (int)$_POST['secondRep']))
+            //     $new_Arr[] = $exploded_InpStrng[$i];
+            // }else{
+            //     $new_Arr[] = $exploded_InpStrng[$i];
+            // }
 
         }
         $output .= '<span>OutPut : </span>'.strtoupper(implode("",$new_Arr)).'<br>';
